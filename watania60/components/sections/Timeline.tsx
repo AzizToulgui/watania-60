@@ -87,7 +87,7 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section id="timeline" className="relative z-30 py-[clamp(96px,14vh,180px)]">
+    <section id="timeline" className="relative z-30 py-[clamp(72px,12vh,180px)]">
       <div className="mx-auto max-w-[1440px] px-[var(--pad)]">
         <SectionHead copy={m.timeline} />
       </div>

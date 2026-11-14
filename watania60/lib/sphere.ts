@@ -22,10 +22,11 @@ export function fibonacciSphere(n: number): Unit[] {
 
 export function sphereMetrics(w: number, h: number) {
   const hr = w <= 380 ? 0.38 : w <= 640 ? 0.42 : 0.46;
-  const wr = w <= 380 ? 0.48 : w <= 640 ? 0.52 : 0.58;
+  // Phones get a narrower sphere so the frames, magnified by perspective, stay on screen.
+  const wr = w <= 380 ? 0.4 : w <= 640 ? 0.42 : 0.58;
   const floor = w <= 380 ? 108 : w <= 640 ? 120 : 155;
   const R = Math.max(floor, Math.min(500, h * hr, w * wr));
-  const cw = Math.round(Math.max(72, R * 0.5));
+  const cw = Math.round(Math.max(72, R * (w <= 640 ? 0.56 : 0.5)));
   const persp = w <= 380 ? 620 : w <= 640 ? 760 : w <= 900 ? 920 : 1150;
   const decodeMax = w <= 380 ? 420 : w <= 640 ? 520 : w <= 900 ? 640 : 760;
   return { R, cw, persp, decodeMax };

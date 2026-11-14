@@ -610,7 +610,7 @@ body.lit .hero-chrome.hide-deep {
   transition: transform 0.4s var(--ease), background 0.3s;
 }
 .gridbtn:hover b { background: #fff; transform: scale(0.86); }
-body.deep .gridbtn, body.gridview .gridbtn {
+body.deep:not(.past-hero) .gridbtn, body.gridview .gridbtn {
   opacity: 1;
   transform: none;
   pointer-events: auto;
@@ -902,6 +902,13 @@ body.menu-open #menu { clip-path: inset(0); pointer-events: auto; }
 }
 @media (max-width: 640px) {
   :root { --hw: min(86vw, 360px); --pad: clamp(12px, 4vw, 18px); }
+  /* Lift the sphere (and the title on its center) clear of the intro text at the bottom. */
+  #world { top: 40%; }
+  /* Menu: the secondary-language label goes under each link instead of beside it. */
+  #menu nav a { flex-direction: column; align-items: center; gap: 0; }
+  #menu nav a [lang] { font-size: 0.3em; margin-top: 2px; }
+  #menu .addr { flex-wrap: wrap; row-gap: 6px; }
+  #menu .addr > [role="group"] { order: -1; width: 100%; justify-content: center; }
   #lit {
     display: block;
     overflow-y: auto;

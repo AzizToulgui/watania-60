@@ -121,4 +121,4 @@ export function Divider({ tc }: { tc: string }) {
 }
 
 export const sectionCls =
-  "relative z-30 mx-auto min-h-dvh max-w-[1440px] px-[var(--pad)] py-[clamp(96px,14vh,180px)]";
+  "relative z-30 mx-auto max-w-[1440px] px-[var(--pad)] py-[clamp(72px,12vh,180px)] min-[768px]:min-h-dvh";

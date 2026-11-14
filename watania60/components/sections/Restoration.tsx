@@ -21,7 +21,7 @@ export default function Restoration() {
   }, []);
 
   return (
-    <section id="restoration" className="relative z-30 py-[clamp(96px,14vh,180px)]">
+    <section id="restoration" className="relative z-30 py-[clamp(72px,12vh,180px)]">
       <div className="mx-auto max-w-[1440px] px-[var(--pad)]">
         <div className="grid items-end gap-10 min-[901px]:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <SectionHead copy={{ ...t, lead: undefined }} />
@@ -66,7 +66,7 @@ export default function Restoration() {
         <span className="mono absolute top-[var(--pad)] left-[var(--pad)] rounded-sm bg-black/50 px-2 py-1 text-ink/80">
           {t.original}
         </span>
-        <span className="mono absolute top-[var(--pad)] right-[var(--pad)] rounded-sm bg-black/50 px-2 py-1 text-ink/80">
+        <span className="mono absolute top-[var(--pad)] right-[var(--pad)] rounded-sm max-[640px]:top-auto max-[640px]:bottom-[var(--pad)] bg-black/50 px-2 py-1 text-ink/80">
           {t.restored}
         </span>
 

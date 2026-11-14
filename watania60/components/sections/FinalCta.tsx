@@ -11,7 +11,7 @@ export default function FinalCta() {
   const t = m.cta;
 
   return (
-    <section id="access" className="relative z-30 grid min-h-dvh place-items-center overflow-hidden px-[var(--pad)] py-[clamp(96px,14vh,180px)]">
+    <section id="access" className="relative z-30 grid place-items-center min-[768px]:min-h-dvh overflow-hidden px-[var(--pad)] py-[clamp(72px,12vh,180px)]">
       {/* Static ghost of the sphere */}
       <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-[.12]" aria-hidden="true">
         <div className="relative size-[min(90vw,820px)]">

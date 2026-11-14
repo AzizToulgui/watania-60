@@ -17,9 +17,10 @@ export default function CreatorStudio() {
       <div className="grid items-center gap-[clamp(48px,6vw,110px)] min-[901px]:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
         {/* The demo keeps a left-to-right layout so the crop animation matches in every language. */}
         <div ref={ref} data-reveal className="max-[900px]:order-2" dir="ltr">
-          <div className="flex items-end gap-[clamp(16px,2.4vw,32px)]">
+          {/* Side by side from tablet up; stacked on phones so both previews stay readable. */}
+          <div className="flex items-end gap-[clamp(16px,2.4vw,32px)] max-[640px]:flex-col max-[640px]:items-center">
             {/* 16:9 source with tracking 9:16 crop */}
-            <div className="relative aspect-video flex-1 overflow-hidden rounded-[3px] bg-[#0b0b0b]">
+            <div className="relative aspect-video flex-1 overflow-hidden rounded-[3px] bg-[#0b0b0b] max-[640px]:w-full max-[640px]:flex-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={clip.thumb} alt="" className="h-full w-full object-cover" />
               <div
@@ -28,12 +29,12 @@ export default function CreatorStudio() {
               >
                 <span className="mono absolute -top-px left-1.5 translate-y-1.5 text-[8px] text-ink/80">9:16</span>
               </div>
-              <span className="mono absolute bottom-3 left-3 text-ink/70">{t.crop}</span>
+              <span className="mono absolute bottom-3 left-3 whitespace-nowrap text-ink/70 max-[640px]:text-[9px]">{t.crop}</span>
             </div>
 
             {/* Vertical preview */}
             <div
-              className="relative aspect-[286/512] w-[clamp(110px,16vw,210px)] shrink-0"
+              className="relative aspect-[286/512] w-[clamp(110px,16vw,210px)] shrink-0 max-[640px]:mb-7 max-[640px]:w-[46%]"
               style={{ animation: "popOut 6s ease infinite", animationPlayState: play }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -46,10 +47,15 @@ export default function CreatorStudio() {
 
           {/* Timeline strip */}
           <div className="relative mt-5">
-            <div className="grid grid-cols-12 gap-1">
-              {archive.slice(0, 12).map((f) => (
+            <div className="grid grid-cols-12 gap-1 max-[640px]:grid-cols-6">
+              {archive.slice(0, 12).map((f, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img key={f.id} src={f.thumb} alt="" className="aspect-video w-full rounded-[1px] object-cover opacity-60" />
+                <img
+                  key={f.id}
+                  src={f.thumb}
+                  alt=""
+                  className={`aspect-video w-full rounded-[1px] object-cover opacity-60 ${i >= 6 ? "max-[640px]:hidden" : ""}`}
+                />
               ))}
             </div>
             {[22, 64].map((left) => (

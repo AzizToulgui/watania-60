@@ -14,7 +14,7 @@ const TITLE_Z = 1.08;
 export default function ArchiveSphere() {
   const { srcs, setSrc, reportLoaded, openShot, focusedRef, relayoutRef, setGrid } = useArchive();
   const trackRef = useRef<HTMLElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null); // sticky viewport that scrolls away after the dolly
   const stageRef = useRef<HTMLDivElement>(null);
   const worldRef = useRef<HTMLDivElement>(null);
   const orbRef = useRef<HTMLDivElement>(null);
@@ -44,7 +44,6 @@ export default function ArchiveSphere() {
     const world = worldRef.current!;
     const orb = orbRef.current!;
     const headline = headlineRef.current!;
-    const hero = heroRef.current!;
     const track = trackRef.current!;
     const cards = cardRefs.current;
 
@@ -66,8 +65,8 @@ export default function ArchiveSphere() {
       lastOpacity: [] as number[],
       lastD: [] as number[],
       lastFront: [] as boolean[],
-      heroOpacity: -1,
       deep: false,
+      past: false,
     };
     const PITCH = 32;
 
@@ -150,17 +149,17 @@ export default function ArchiveSphere() {
       const target = p * Math.min(64, s.R * 0.12);
       s.camZ += (target - s.camZ) * 0.075;
 
-      const deep = p > 0.5 && y < trackEnd;
+      // "deep" holds until the hero has scrolled off, so its chrome does not reappear on the way out.
+      const deep = p > 0.5 && heroVisible;
       if (deep !== s.deep) {
         s.deep = deep;
         document.body.classList.toggle("deep", deep);
       }
-
-      // Fade the hero to black across the last 15% of the dolly.
-      const ho = 1 - Math.max(0, Math.min(1, (p - 0.85) / 0.15));
-      if (ho !== s.heroOpacity) {
-        s.heroOpacity = ho;
-        hero.style.opacity = String(ho);
+      // The sphere has started scrolling away: hide the grid button so it does not sit on the next section.
+      const past = y > trackEnd + 40;
+      if (past !== s.past) {
+        s.past = past;
+        document.body.classList.toggle("past-hero", past);
       }
 
       if (heroVisible) {
@@ -171,7 +170,10 @@ export default function ArchiveSphere() {
         const tz = s.R * TITLE_Z;
         const k = (s.persp - tz) / s.persp;
         headline.style.transform = `rotateX(${-sx}deg) rotateY(${-sy}deg) translateZ(${tz}px) scale(${k})`;
-        headline.style.opacity = String(Math.max(0, 1 - p * 0.55));
+        // Fade the inner block, never the h1: opacity < 1 on the h1 flattens its 3D context and
+        // Chrome then clips everything above the zero-height box (the first line disappears).
+        const inner = headline.firstElementChild as HTMLElement | null;
+        if (inner) inner.style.opacity = String(Math.max(0, 1 - p * 0.55));
 
         const ca = Math.cos(sx * DEG);
         const sa = Math.sin(sx * DEG);
@@ -218,7 +220,6 @@ export default function ArchiveSphere() {
     };
     frame();
 
-    // ---------- Scroll clamp is not needed: the page continues past the hero. ----------
 
     // ---------- Drag ----------
     let active = false;
@@ -321,7 +322,7 @@ export default function ArchiveSphere() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("orientationchange", onOrient);
       window.visualViewport?.removeEventListener("resize", onResize);
-      document.body.classList.remove("deep");
+      document.body.classList.remove("deep", "past-hero");
     };
   }, [focusedRef, openShot, relayoutRef]);
 

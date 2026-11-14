@@ -65,7 +65,7 @@ export default function Together() {
             </div>
           </div>
 
-          <div className="relative -mt-7 flex justify-center gap-[clamp(10px,2vw,22px)]">
+          <div className="relative -mt-7 flex justify-center max-[640px]:-mt-5 gap-[clamp(10px,2vw,22px)]">
             {VIEWERS.map((v, i) => (
               <div key={v.year} className="relative flex flex-col items-center">
                 {floats
@@ -92,7 +92,7 @@ export default function Together() {
         </div>
 
         <div data-reveal style={{ ["--s" as string]: 2 }}>
-          <div className="mb-3 flex items-baseline justify-between">
+          <div className="mb-3 flex items-baseline justify-between gap-4 max-[480px]:flex-col max-[480px]:gap-1">
             <p className="font-serif text-[20px]">{t.playlist}</p>
             <p className="mono text-ink/50">{t.playlistMeta}</p>
           </div>
