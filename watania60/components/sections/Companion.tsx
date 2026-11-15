@@ -39,7 +39,7 @@ export default function Companion() {
   }, [started, count, inView, reduced]);
 
   return (
-    <section id="companion" className={sectionCls}>
+    <section id="companion" data-tc="00:19:02:12" className={sectionCls}>
       <div className="grid items-center gap-[clamp(48px,6vw,110px)] min-[901px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <SectionHead copy={t.companion} />
 
@@ -53,7 +53,11 @@ export default function Companion() {
             <span className="font-serif text-[15px]">{t.companion.name}</span>
             <span className="mono text-phosphor/55">{t.grid.kicker}</span>
           </div>
-          <div className="flex min-h-[440px] flex-col gap-5 p-5" aria-live="polite">
+          {/* Fixed height that follows the screen; newest messages sit at the bottom and older ones fade out at the top. */}
+          <div
+            className="flex h-[clamp(300px,calc(100dvh-330px),520px)] flex-col justify-end gap-[clamp(12px,2vh,20px)] overflow-hidden p-5 [mask-image:linear-gradient(to_bottom,transparent,black_64px)]"
+            aria-live="polite"
+          >
             {SCRIPT.slice(0, count).map((m, i) => {
               // Messages in another language than the page carry their own lang/dir.
               const other = m.lang && m.lang !== locale ? langProps(m.lang) : {};

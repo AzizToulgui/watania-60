@@ -46,10 +46,35 @@ export default function Together() {
 
 
   return (
-    <section id="together" className={sectionCls}>
-      <SectionHead copy={t} />
+    <section id="together" data-tc="00:41:55:08" className={sectionCls}>
+      {/* Heading and playlist on the left, the watch party on the right: one screen on desktop. */}
+      <div ref={ref} className="grid items-center gap-[clamp(32px,4vw,72px)] min-[1024px]:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div>
+          <SectionHead copy={t} />
+          <div data-reveal className="mt-[clamp(16px,3.5vh,40px)]" style={{ ["--s" as string]: 4 }}>
+            <div className="mb-3 flex items-baseline justify-between gap-4 max-[480px]:flex-col max-[480px]:gap-1">
+              <p className="font-serif text-[20px]">{t.playlist}</p>
+              <p className="mono text-ink/50">{t.playlistMeta}</p>
+            </div>
+            <ul className="divide-y divide-ink/10 border-y border-ink/10">
+              {PLAYLIST.map((p, i) => {
+                const f = frame(p.f);
+                return (
+                  <li key={p.f} className="flex items-center gap-4 py-[clamp(8px,1.5vh,14px)]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={f.thumb} alt="" className={`aspect-video w-[clamp(56px,9vh,80px)] shrink-0 rounded-[2px] object-cover ${f.bw ? "grayscale" : ""}`} />
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-[14px] font-normal">{m.archive[f.id].program}</p>
+                      <p className="mt-0.5 truncate text-[12px] text-ink/50">{t.addedBy[i]}</p>
+                    </div>
+                    <span className="mono shrink-0 text-ink/50" dir="ltr">{p.rt}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
 
-      <div ref={ref} className="mt-14 grid items-start gap-[clamp(32px,4vw,64px)] min-[1024px]:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <div data-reveal className="relative">
           <div className="relative aspect-video overflow-hidden rounded-[3px] bg-[#0b0b0b]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -89,29 +114,6 @@ export default function Together() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div data-reveal style={{ ["--s" as string]: 2 }}>
-          <div className="mb-3 flex items-baseline justify-between gap-4 max-[480px]:flex-col max-[480px]:gap-1">
-            <p className="font-serif text-[20px]">{t.playlist}</p>
-            <p className="mono text-ink/50">{t.playlistMeta}</p>
-          </div>
-          <ul className="divide-y divide-ink/10 border-y border-ink/10">
-            {PLAYLIST.map((p, i) => {
-              const f = frame(p.f);
-              return (
-                <li key={p.f} className="flex items-center gap-4 py-3.5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={f.thumb} alt="" className={`aspect-video w-20 shrink-0 rounded-[2px] object-cover ${f.bw ? "grayscale" : ""}`} />
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-[14px] font-normal">{m.archive[f.id].program}</p>
-                    <p className="mt-0.5 truncate text-[12px] text-ink/50">{t.addedBy[i]}</p>
-                  </div>
-                  <span className="mono shrink-0 text-ink/50" dir="ltr">{p.rt}</span>
-                </li>
-              );
-            })}
-          </ul>
         </div>
       </div>
     </section>

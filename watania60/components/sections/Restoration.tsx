@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
-import { SectionHead } from "./shared";
+import { SectionHead, sectionCls } from "./shared";
 
 const BEFORE = "/archive/harbor-original.jpg";
 const AFTER = "/archive/harbor-restored.jpg";
@@ -21,9 +21,9 @@ export default function Restoration() {
   }, []);
 
   return (
-    <section id="restoration" className="relative z-30 py-[clamp(72px,12vh,180px)]">
-      <div className="mx-auto max-w-[1440px] px-[var(--pad)]">
-        <div className="grid items-end gap-10 min-[901px]:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+    <section id="restoration" data-tc="00:12:48:00" className={sectionCls}>
+      <div>
+        <div className="grid items-end gap-x-10 gap-y-4 min-[901px]:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <SectionHead copy={{ ...t, lead: undefined }} />
           <p data-reveal className="max-w-[46ch] text-[15px] leading-[1.6] text-ink/72" style={{ ["--s" as string]: 3 }}>
             {t.lead}
@@ -31,13 +31,15 @@ export default function Restoration() {
         </div>
       </div>
 
+      {/* Slider and notes side by side on desktop; the slider's height follows the screen so the section fits one view. */}
+      <div className="mt-[clamp(20px,4vh,44px)] grid items-stretch gap-[clamp(20px,3vw,48px)] min-[901px]:grid-cols-[minmax(0,1fr)_280px]">
       <div
         ref={boxRef}
         data-reveal
         data-cursor="‹ ›"
         // Original on the left, restored on the right, in every language.
         dir="ltr"
-        className="relative mx-auto mt-[clamp(40px,6vh,72px)] aspect-[16/9] w-[calc(100%-var(--pad)*2)] max-w-[1180px] touch-pan-y overflow-hidden rounded-[3px] select-none max-[640px]:aspect-[4/5]"
+        className="relative h-[clamp(220px,calc(100dvh-380px),620px)] w-full touch-pan-y overflow-hidden rounded-[3px] select-none max-[900px]:aspect-video max-[900px]:h-auto max-[640px]:aspect-[4/5]"
         onPointerDown={(e) => {
           dragging.current = true;
           e.currentTarget.setPointerCapture(e.pointerId);
@@ -89,23 +91,26 @@ export default function Restoration() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-[1180px] gap-px px-[var(--pad)] min-[768px]:grid-cols-3">
-        {t.stats.map(({ t: title, d }, i) => (
-          <div
-            key={i}
-            data-reveal
-            style={{ ["--s" as string]: i }}
-            className="border-t border-ink/15 py-6 min-[768px]:pe-10 min-[768px]:[&:not(:first-child)]:border-s min-[768px]:[&:not(:first-child)]:ps-8"
-          >
-            <p className="font-serif text-[22px]">{title}</p>
-            <p className="mt-2 text-[14px] leading-[1.6] text-ink/65">{d}</p>
-          </div>
-        ))}
+      <div className="flex flex-col justify-between gap-6">
+        <div className="grid gap-px max-[900px]:min-[641px]:grid-cols-3">
+          {t.stats.map(({ t: title, d }, i) => (
+            <div
+              key={i}
+              data-reveal
+              style={{ ["--s" as string]: i }}
+              className="border-t border-ink/15 py-[clamp(10px,2vh,18px)] max-[900px]:min-[641px]:pe-6"
+            >
+              <p className="font-serif text-[clamp(18px,2.6vh,22px)]">{title}</p>
+              <p className="mt-1.5 text-[13px] leading-[1.55] text-ink/65">{d}</p>
+            </div>
+          ))}
+        </div>
+        <p data-reveal className="mono text-ink/70">
+          <span className="me-2 inline-block size-1.5 rounded-full bg-red align-[1px]" />
+          {t.kept}
+        </p>
       </div>
-      <p data-reveal className="mono mx-auto mt-6 max-w-[1180px] px-[var(--pad)] text-ink/70">
-        <span className="me-2 inline-block size-1.5 rounded-full bg-red align-[1px]" />
-        {t.kept}
-      </p>
+      </div>
     </section>
   );
 }

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { archive } from "@/lib/archive";
 import { useI18n } from "@/lib/i18n";
-import { SectionHead } from "./shared";
+import { SectionHead, screenCls } from "./shared";
 
 // Milestone texts are in messages (timeline.stops), in this order.
 const YEARS = [1966, 1976, 1986, 1996, 2006, 2016, 2026];
@@ -87,7 +87,13 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section id="timeline" className="relative z-30 py-[clamp(72px,12vh,180px)]">
+    <section
+      id="timeline"
+      data-tc="00:48:21:16"
+      className={screenCls}
+      // Stop width follows the screen height so year, image and text fit one view.
+      style={{ ["--stop" as string]: "min(72vw, 520px, calc((85dvh - 430px) * 16 / 9 + 56px))" }}
+    >
       <div className="mx-auto max-w-[1440px] px-[var(--pad)]">
         <SectionHead copy={m.timeline} />
       </div>
@@ -97,7 +103,7 @@ export default function Timeline() {
         data-cursor="drag"
         // Time runs left to right in every language; the scroll math assumes it.
         dir="ltr"
-        className="no-scrollbar relative mt-14 flex snap-x snap-mandatory overflow-x-auto px-[calc(50vw-min(36vw,260px))] select-none"
+        className="no-scrollbar relative mt-[clamp(16px,3vh,56px)] flex snap-x snap-mandatory overflow-x-auto px-[calc(50vw-var(--stop)/2)] select-none"
       >
         {STOPS.map((s, i) => {
           const f = frameFor(s.year);
@@ -106,9 +112,9 @@ export default function Timeline() {
             <div
               key={s.year}
               data-stop
-              className={`relative w-[min(72vw,520px)] shrink-0 snap-center px-[clamp(12px,2vw,28px)] ${i === center ? "is-center" : ""}`}
+              className={`relative w-[var(--stop)] min-w-[260px] shrink-0 snap-center px-[clamp(12px,2vw,28px)] ${i === center ? "is-center" : ""}`}
             >
-              <p className="outline-year font-serif text-[clamp(64px,11vw,160px)] leading-[.82] font-light tracking-[-0.03em]">{s.year}</p>
+              <p className="outline-year font-serif text-[clamp(56px,min(11vw,15vh),160px)] leading-[.82] font-light tracking-[-0.03em]">{s.year}</p>
               <div className="relative -mx-[clamp(12px,2vw,28px)] h-px bg-ink/20">
                 <span
                   className={`absolute top-1/2 left-[clamp(12px,2vw,28px)] size-[9px] -translate-y-1/2 rounded-full transition-all duration-500 ${i === center ? "bg-red opacity-100" : "bg-ink/40 opacity-60"}`}
@@ -119,7 +125,7 @@ export default function Timeline() {
                 src={f.thumb}
                 alt=""
                 draggable={false}
-                className="mt-6 aspect-video w-full rounded-[3px] object-cover transition-opacity duration-500"
+                className="mt-[clamp(10px,2vh,24px)] aspect-video w-full rounded-[3px] object-cover transition-opacity duration-500"
                 style={{ filter: `grayscale(${g})`, opacity: i === center ? 1 : 0.45 }}
               />
               <p dir={dir} className="mt-4 max-w-[38ch] text-start text-[14px] leading-[1.6] text-ink/70">
@@ -129,7 +135,7 @@ export default function Timeline() {
           );
         })}
       </div>
-      <p className="mono mx-auto mt-8 max-w-[1440px] px-[var(--pad)] text-ink/40" dir="ltr">
+      <p className="mono mx-auto mt-[clamp(10px,2vh,32px)] w-full max-w-[1440px] px-[var(--pad)] text-ink/40" dir="ltr">
         {STOPS[center].year} · {center + 1} / {STOPS.length}
       </p>
     </section>

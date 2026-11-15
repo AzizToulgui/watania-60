@@ -66,7 +66,6 @@ export default function ArchiveSphere() {
       lastD: [] as number[],
       lastFront: [] as boolean[],
       deep: false,
-      past: false,
     };
     const PITCH = 32;
 
@@ -132,8 +131,7 @@ export default function ArchiveSphere() {
       const vh = window.innerHeight;
       const y = window.scrollY;
       const lit = focusedRef.current >= 0;
-      const trackEnd = track.offsetHeight - vh;
-      const heroVisible = y < trackEnd + vh;
+      const heroVisible = y < track.offsetHeight;
 
       if (!dragging && !lit) {
         s.dragX += s.velX;
@@ -145,7 +143,8 @@ export default function ArchiveSphere() {
       }
       s.dragY = Math.max(-PITCH - s.tilt, Math.min(PITCH - s.tilt, s.dragY));
 
-      const p = Math.max(0, Math.min(1, y / (vh * 0.3)));
+      // The hero is one snapped screen: the dolly plays while scrolling from it to the next section.
+      const p = Math.max(0, Math.min(1, y / vh));
       const target = p * Math.min(64, s.R * 0.12);
       s.camZ += (target - s.camZ) * 0.075;
 
@@ -154,12 +153,6 @@ export default function ArchiveSphere() {
       if (deep !== s.deep) {
         s.deep = deep;
         document.body.classList.toggle("deep", deep);
-      }
-      // The sphere has started scrolling away: hide the grid button so it does not sit on the next section.
-      const past = y > trackEnd + 40;
-      if (past !== s.past) {
-        s.past = past;
-        document.body.classList.toggle("past-hero", past);
       }
 
       if (heroVisible) {
@@ -322,7 +315,7 @@ export default function ArchiveSphere() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("orientationchange", onOrient);
       window.visualViewport?.removeEventListener("resize", onResize);
-      document.body.classList.remove("deep", "past-hero");
+      document.body.classList.remove("deep");
     };
   }, [focusedRef, openShot, relayoutRef]);
 

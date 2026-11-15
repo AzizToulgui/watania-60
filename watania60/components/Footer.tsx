@@ -14,7 +14,7 @@ export default function Footer() {
   const { m, altLang } = useI18n();
   const t = m.footer;
   return (
-    <footer className="relative z-30 border-t border-ink/12 px-[var(--pad)] pt-16 pb-[calc(var(--pad)+var(--safe-bottom))] text-[12.5px] text-dim">
+    <footer className="relative z-30 snap-end border-t border-ink/12 px-[var(--pad)] pt-16 pb-[calc(var(--pad)+var(--safe-bottom))] text-[12.5px] text-dim">
       <div className="mx-auto grid max-w-[1440px] gap-10 min-[900px]:grid-cols-3">
         <div>
           <p className="flex items-center gap-3 font-serif text-[24px] text-ink">

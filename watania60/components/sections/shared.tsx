@@ -83,12 +83,12 @@ export function SectionHead({ copy, className = "", center = false }: { copy: He
   const { altLang, dir } = useI18n();
   return (
     <div className={className}>
-      <p data-reveal className="mono mb-6 text-phosphor/60" style={{ ["--s" as string]: 0 }}>
+      <p data-reveal className="mono mb-[clamp(12px,2.4vh,24px)] text-phosphor/60" style={{ ["--s" as string]: 0 }}>
         {copy.chapter}
       </p>
       <h2
         data-reveal
-        className="font-serif text-[clamp(34px,5.2vw,76px)] leading-[1.02] font-light tracking-[-0.02em] text-balance"
+        className="font-serif text-[clamp(30px,min(5.2vw,8.5vh),76px)] leading-[1.02] font-light tracking-[-0.02em] text-balance"
         style={{ ["--s" as string]: 1 }}
       >
         {rich(copy.title)}
@@ -96,14 +96,14 @@ export function SectionHead({ copy, className = "", center = false }: { copy: He
       <p
         data-reveal
         {...langProps(altLang)}
-        className="mt-4 text-[clamp(18px,2vw,26px)] font-light text-ink/60"
+        className="mt-[clamp(8px,1.6vh,16px)] text-[clamp(17px,min(2vw,3.4vh),26px)] font-light text-ink/60"
         // Align with the page, not with the secondary line's own direction.
         style={{ ["--s" as string]: 2, textAlign: center ? "center" : dir === "rtl" ? "right" : "left" }}
       >
         {copy.alt}
       </p>
       {copy.lead && (
-        <p data-reveal className="mt-7 max-w-[52ch] text-[15px] leading-[1.6] text-ink/72" style={{ ["--s" as string]: 3 }}>
+        <p data-reveal className="mt-[clamp(14px,3vh,28px)] max-w-[52ch] text-[15px] leading-[1.6] text-ink/72" style={{ ["--s" as string]: 3 }}>
           {copy.lead}
         </p>
       )}
@@ -111,14 +111,8 @@ export function SectionHead({ copy, className = "", center = false }: { copy: He
   );
 }
 
-export function Divider({ tc }: { tc: string }) {
-  return (
-    <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-[var(--pad)]" aria-hidden="true">
-      <span className="mono shrink-0 text-phosphor/45">{tc}</span>
-      <span className="h-px flex-1 bg-ink/12" />
-    </div>
-  );
-}
+/** One screen per section: full viewport height, snapped, content centered between the header and the timecode. */
+export const screenCls =
+  "relative z-30 flex min-h-dvh snap-start snap-always flex-col justify-center pt-[calc(84px+var(--safe-top))] pb-[calc(64px+var(--safe-bottom))]";
 
-export const sectionCls =
-  "relative z-30 mx-auto max-w-[1440px] px-[var(--pad)] py-[clamp(72px,12vh,180px)] min-[768px]:min-h-dvh";
+export const sectionCls = `${screenCls} mx-auto max-w-[1440px] px-[var(--pad)]`;

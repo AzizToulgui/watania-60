@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { archive } from "@/lib/archive";
 import { langProps, useI18n } from "@/lib/i18n";
+import { screenCls } from "./shared";
 
 export default function FinalCta() {
   const [sent, setSent] = useState(false);
@@ -11,7 +12,7 @@ export default function FinalCta() {
   const t = m.cta;
 
   return (
-    <section id="access" className="relative z-30 grid place-items-center min-[768px]:min-h-dvh overflow-hidden px-[var(--pad)] py-[clamp(72px,12vh,180px)]">
+    <section id="access" className={`${screenCls} items-center overflow-hidden px-[var(--pad)]`}>
       {/* Static ghost of the sphere */}
       <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-[.12]" aria-hidden="true">
         <div className="relative size-[min(90vw,820px)]">
@@ -37,7 +38,7 @@ export default function FinalCta() {
 
       <div className="relative text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img data-reveal src="/logo.png" alt={t.logoAlt} width={509} height={405} className="mx-auto mb-10 w-[clamp(72px,8vw,110px)]" />
+        <img data-reveal src="/logo.png" alt={t.logoAlt} width={509} height={405} className="mx-auto mb-[clamp(16px,4vh,40px)] w-[clamp(64px,min(8vw,13vh),110px)]" />
         <h2 data-reveal className="font-serif text-[clamp(40px,7vw,108px)] leading-[1] font-light tracking-[-0.025em]">
           {t.line1}
           <br />

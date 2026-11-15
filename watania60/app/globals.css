@@ -31,6 +31,12 @@
 html {
   background: #000;
   scrollbar-gutter: stable;
+  /* One screen per section: the page snaps from section to section. */
+  scroll-snap-type: y mandatory;
+}
+@media (max-width: 767px) {
+  /* Phones: some sections stack taller than the screen, so snap only near the edges. */
+  html { scroll-snap-type: y proximity; }
 }
 body {
   background: #000;
@@ -384,11 +390,12 @@ body.menu-open .menu-btn:hover .bars i:last-child { transform: rotate(-45deg); }
 /* ---------- Hero / sphere ---------- */
 #scrolltrack {
   position: relative;
-  height: 130vh;
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
 }
 #hero {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
@@ -610,7 +617,8 @@ body.lit .hero-chrome.hide-deep {
   transition: transform 0.4s var(--ease), background 0.3s;
 }
 .gridbtn:hover b { background: #fff; transform: scale(0.86); }
-body.deep:not(.past-hero) .gridbtn, body.gridview .gridbtn {
+/* Shown inside the grid view, where it closes the grid. */
+body.gridview .gridbtn {
   opacity: 1;
   transform: none;
   pointer-events: auto;
@@ -837,6 +845,21 @@ body.menu-open #menu { clip-path: inset(0); pointer-events: auto; }
 #dot.label span { opacity: 1; }
 @media (hover: none), (pointer: coarse) {
   #dot { display: none; }
+}
+
+/* ---------- Section timecode (bottom edge of every screen) ---------- */
+section[data-tc]::after {
+  content: attr(data-tc);
+  position: absolute;
+  inset-inline: var(--pad);
+  bottom: calc(18px + var(--safe-bottom));
+  padding-top: 10px;
+  border-top: 1px solid rgba(244, 242, 239, 0.12);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(217, 231, 212, 0.45);
+  pointer-events: none;
 }
 
 /* ---------- Reveal ---------- */

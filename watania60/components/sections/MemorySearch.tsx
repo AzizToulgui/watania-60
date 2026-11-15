@@ -77,7 +77,7 @@ export default function MemorySearch() {
   const rows = RESULTS[phrase];
 
   return (
-    <section id="search" className={sectionCls}>
+    <section id="search" data-tc="00:06:21:00" className={sectionCls}>
       <div className="grid items-center gap-[clamp(48px,6vw,110px)] min-[901px]:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <SectionHead copy={m.search} />
 

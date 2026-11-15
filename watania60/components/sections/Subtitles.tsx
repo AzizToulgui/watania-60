@@ -30,14 +30,14 @@ export default function Subtitles() {
   const frame = getFrame("el-douar");
 
   return (
-    <section id="subtitles" className={sectionCls}>
+    <section id="subtitles" data-tc="00:27:36:04" className={sectionCls}>
       <SectionHead
         center
         className="mx-auto max-w-[900px] text-center [&_p]:mx-auto"
         copy={t.subtitles}
       />
 
-      <div ref={ref} data-reveal className="mx-auto mt-14 max-w-[960px]">
+      <div ref={ref} data-reveal className="mx-auto mt-[clamp(16px,3.5vh,56px)] w-full max-w-[min(960px,calc((100dvh-420px)*16/9))] min-w-[min(100%,420px)]">
         <div className="mb-4 flex justify-center">
           <div className="flex gap-1 text-[13px]" role="group" aria-label={t.subtitles.group}>
             {MODES.map((m) => (

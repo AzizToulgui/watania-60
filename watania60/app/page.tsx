@@ -17,7 +17,7 @@ import Restoration from "@/components/sections/Restoration";
 import Subtitles from "@/components/sections/Subtitles";
 import Timeline from "@/components/sections/Timeline";
 import Together from "@/components/sections/Together";
-import { Divider, Reveals } from "@/components/sections/shared";
+import { Reveals } from "@/components/sections/shared";
 import { I18nProvider } from "@/lib/i18n";
 
 export default function Home() {
@@ -28,17 +28,11 @@ export default function Home() {
       <main>
         <ArchiveSphere />
         <MemorySearch />
-        <Divider tc="00:12:48:00" />
         <Restoration />
-        <Divider tc="00:19:02:12" />
         <Companion />
-        <Divider tc="00:27:36:04" />
         <Subtitles />
-        <Divider tc="00:34:10:20" />
         <CreatorStudio />
-        <Divider tc="00:41:55:08" />
         <Together />
-        <Divider tc="00:48:21:16" />
         <Timeline />
         <FinalCta />
       </main>

@@ -13,7 +13,7 @@ export default function CreatorStudio() {
   const t = m.studio;
 
   return (
-    <section id="studio" className={sectionCls}>
+    <section id="studio" data-tc="00:34:10:20" className={sectionCls}>
       <div className="grid items-center gap-[clamp(48px,6vw,110px)] min-[901px]:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
         {/* The demo keeps a left-to-right layout so the crop animation matches in every language. */}
         <div ref={ref} data-reveal className="max-[900px]:order-2" dir="ltr">

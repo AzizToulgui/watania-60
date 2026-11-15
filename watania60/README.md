@@ -64,6 +64,10 @@ image has a different layout, adjust its crop box in the script.
 
 ## Notes
 
+- One screen per section: `html` uses `scroll-snap-type: y mandatory` (proximity on phones, where
+  stacked sections can be taller than the screen). Sections use `screenCls` / `sectionCls` from
+  `components/sections/shared.tsx`; sizes that must fit one view are tied to `dvh`.
+
 - The title sits just in front of the sphere surface (`TITLE_Z` in `ArchiveSphere.tsx`) and is
   counter-scaled for perspective, so it stays centered and readable while frames pass behind it.
 - Tunisian red (`--color-red`) is a signal color: keep it to one element per screen.
