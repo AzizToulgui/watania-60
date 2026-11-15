@@ -638,6 +638,21 @@ body.gridview .gridbtn b:last-child { transform: translate(-3px, -3px); }
   transition: opacity 0.6s ease;
 }
 body.gridview #grid { opacity: 1; pointer-events: auto; z-index: 58; }
+#grid .gridback {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  margin-bottom: 18px;
+  padding: 0 16px 0 12px;
+  font-size: 13px;
+  color: #f4f2ef;
+  border: 1px solid rgba(244, 242, 239, 0.3);
+  border-radius: 999px;
+  transition: border-color 0.3s, background 0.3s;
+}
+#grid .gridback:hover { border-color: #f4f2ef; background: rgba(244, 242, 239, 0.06); }
+[dir="rtl"] #grid .gridback span { transform: scaleX(-1); }
 #grid .rows {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -692,7 +707,13 @@ body.gridview #grid { opacity: 1; pointer-events: auto; z-index: 58; }
   transition: opacity 0.42s ease;
 }
 #lit.on { opacity: 1; pointer-events: auto; }
-#lit .scrim { position: absolute; inset: 0; }
+#lit .scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
 #lit .plate {
   position: relative;
   width: min(72vw, 860px, (100vh - 230px) * 1.5);

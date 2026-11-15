@@ -36,6 +36,7 @@ const ar: Messages = {
     title: "خمس عشرة لحظة، <em>ستون عاماً</em>",
     alt: "The archive",
     toggle: "عرض الشبكة",
+    back: "رجوع",
   },
   lightbox: {
     close: "إغلاق",

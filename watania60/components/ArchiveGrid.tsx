@@ -13,6 +13,15 @@ export default function ArchiveGrid() {
       <div id="grid" aria-hidden={!isGrid}>
         <div className="mx-auto mb-[clamp(20px,3vw,40px)] flex max-w-[1680px] items-end justify-between gap-6">
           <div>
+            <button
+              type="button"
+              className="gridback"
+              tabIndex={isGrid ? 0 : -1}
+              onClick={() => setGrid(false)}
+            >
+              <span aria-hidden="true">←</span>
+              {m.grid.back}
+            </button>
             <p className="mono mb-2 text-phosphor/60">{m.grid.kicker}</p>
             <h2 className="font-serif text-[clamp(28px,3.4vw,48px)] font-light leading-none tracking-[-0.02em]">
               {rich(m.grid.title)}

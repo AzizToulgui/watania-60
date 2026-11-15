@@ -35,6 +35,7 @@ const fr: Messages = {
     title: "Quinze moments, <em>soixante ans</em>",
     alt: "الأرشيف",
     toggle: "Afficher la grille",
+    back: "Retour",
   },
   lightbox: {
     close: "Fermer",

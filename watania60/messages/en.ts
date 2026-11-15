@@ -35,6 +35,7 @@ const en = {
     title: "Fifteen moments, <em>sixty years</em>",
     alt: "الأرشيف",
     toggle: "Toggle grid view",
+    back: "Back",
   },
   lightbox: {
     close: "Close",
