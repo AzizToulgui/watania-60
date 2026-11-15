@@ -19,7 +19,7 @@ export default function Footer() {
         <div>
           <p className="flex items-center gap-3 font-serif text-[24px] text-ink">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="" width={509} height={405} className="h-10 w-auto" />
+            <img src="/logo.svg" alt="" width={378} height={324} className="h-10 w-auto" />
             {m.header.brand} 60
           </p>
           <p className="mt-2">{t.tagline}</p>

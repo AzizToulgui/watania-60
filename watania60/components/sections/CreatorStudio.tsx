@@ -4,10 +4,12 @@ import { archive, frame, images } from "@/lib/archive";
 import { useI18n } from "@/lib/i18n";
 import { SectionHead, sectionCls, useInView, useReducedMotion } from "./shared";
 
+const CAPTION = "شوف، الدنيا ما تدوم لحد… أما الذكريات تبقى.";
+
 export default function CreatorStudio() {
   const [ref, inView] = useInView<HTMLDivElement>();
   const reduced = useReducedMotion();
-  const clip = frame("sitcom");
+  const clip = frame("zanqet-el-bacha");
   const play = inView && !reduced ? "running" : "paused";
   const { m } = useI18n();
   const t = m.studio;
@@ -22,7 +24,7 @@ export default function CreatorStudio() {
             {/* 16:9 source with tracking 9:16 crop */}
             <div className="relative aspect-video flex-1 overflow-hidden rounded-[3px] bg-[#0b0b0b] max-[640px]:w-full max-[640px]:flex-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={clip.thumb} alt="" className="h-full w-full object-cover" />
+              <img src={clip.full} alt="" className="h-full w-full object-cover" />
               <div
                 className="absolute top-0 h-full w-[31.64%] border border-ink shadow-[0_0_0_9999px_rgba(0,0,0,.6)]"
                 style={{ animation: "cropTrack 6s ease-in-out infinite", animationPlayState: play }}
@@ -37,8 +39,23 @@ export default function CreatorStudio() {
               className="relative aspect-[286/512] w-[clamp(110px,16vw,210px)] shrink-0 max-[640px]:mb-7 max-[640px]:w-[46%]"
               style={{ animation: "popOut 6s ease infinite", animationPlayState: play }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={images.phone} alt={t.phoneAlt} className="h-full w-full object-contain" />
+              <div
+                role="img"
+                aria-label={t.phoneAlt}
+                className="relative h-full w-full overflow-hidden rounded-[clamp(14px,2vw,24px)] border-[3px] border-[#1c1c1c] bg-black shadow-[0_24px_60px_rgba(0,0,0,.6)]"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={images.phone} alt="" className="h-full w-full object-cover" />
+                <span className="absolute top-2 left-1/2 h-1 w-1/4 -translate-x-1/2 rounded-full bg-black/70" />
+                {/* The caption is part of the demo, so it stays in Tunisian Arabic in every language. */}
+                <p
+                  lang="ar"
+                  dir="rtl"
+                  className="absolute inset-x-[8%] bottom-[14%] rounded-[4px] bg-black/60 px-1.5 py-1 text-center text-[clamp(9px,1.05vw,13px)] leading-snug font-normal text-white"
+                >
+                  {CAPTION}
+                </p>
+              </div>
               <span className="mono absolute -bottom-6 left-1/2 -translate-x-1/2 text-[8px] whitespace-nowrap text-ink/60">
                 {t.ready}
               </span>

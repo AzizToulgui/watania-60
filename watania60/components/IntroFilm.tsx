@@ -162,7 +162,7 @@ export default function IntroFilm() {
       <div className="fallback" aria-hidden="true">
         <div className="grid justify-items-center gap-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="" width={509} height={405} className="w-[clamp(90px,12vw,150px)] opacity-90" />
+          <img src="/logo.svg" alt="" width={378} height={324} className="w-[clamp(90px,12vw,150px)] opacity-90" />
           <span className="mono">{m.intro.signal}</span>
         </div>
       </div>

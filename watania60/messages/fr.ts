@@ -85,10 +85,10 @@ const fr: Messages = {
     title: "Restauré. <em>Jamais remplacé.</em>",
     alt: "نُرمّم دون أن نُلغي الأصل",
     lead: "La restauration par IA efface les dégâts, colorise le noir et blanc et adapte les anciennes émissions aux écrans d’aujourd’hui. Faites glisser la ligne pour comparer. L’original est conservé, intact, à côté de chaque version restaurée.",
-    original: "Original · 1968 · 576i",
+    original: "Original · 1972 · 576i",
     restored: "Restauré · colorisé par IA · 4K",
-    altBefore: "Le port de pêche, images originales de 1968 en noir et blanc",
-    altAfter: "Le port de pêche, restauré et colorisé",
+    altBefore: "Le port de Kerkennah, version usée en noir et blanc",
+    altAfter: "Le port de Kerkennah, restauré en couleur",
     slider: "Comparer l’original et la version restaurée",
     stats: [
       { t: "Restauration", d: "Rayures, pertes et bruit de bande supprimés image par image." },
@@ -162,6 +162,7 @@ const fr: Messages = {
     party: "Soirée visionnage · 5 spectateurs",
     playlist: "Les dimanches soir",
     playlistMeta: "Partagée · 4 titres · 2:59:27",
+    viewers: ["Sbou3i", "Slimane", "El Haj Klouf", "El Bacha", "Ommi Traki"],
     addedBy: ["Ajouté par la grand-mère de Sami", "Ajouté par Leila", "Ajouté par Youssef", "Ajouté par Ines"],
   },
   timeline: {
@@ -202,80 +203,80 @@ const fr: Messages = {
     end: "CH 01 · Fin des programmes",
   },
   archive: {
-    "first-broadcast": {
-      program: "La première émission",
-      genre: "RTT · Journal",
-      note: "La première soirée de la télévision tunisienne : un bureau, un micro, une caméra.",
+    inauguration: {
+      program: "La soirée d’ouverture",
+      genre: "RTT · Cérémonie",
+      note: "31 mai 1966 : le président Bourguiba inaugure la télévision tunisienne devant un téléviseur flambant neuf.",
+    },
+    "rtt-announcer": {
+      program: "Les premières speakerines",
+      genre: "RTT · Antenne",
+      note: "Les visages qui ouvraient chaque soirée, en direct et en noir et blanc.",
+    },
+    "haj-klouf": {
+      program: "El Haj Klouf",
+      genre: "Sitcom",
+      note: "Le Haj qui se mêle de tout, passé de la radio à la jeune télévision, et la maisonnée qui le supporte.",
     },
     "harbor-original": {
-      program: "Le port de pêche",
+      program: "Le port de Kerkennah",
       genre: "Documentaire",
-      note: "La vie quotidienne d’un port de pêche, filmée pour les archives en 1968.",
+      note: "Des pêcheurs rentrent à l’aube. Image de démonstration : une photo récente, vieillie pour montrer ce que la restauration fait revenir.",
     },
     carthage: {
-      program: "Nuits de Carthage",
+      program: "Les nuits de Carthage",
       genre: "Concert",
-      note: "Des musiciens sous les colonnes romaines, en direct depuis les ruines.",
-    },
-    malouf: {
-      program: "Une nuit de malouf",
-      genre: "Concert",
-      note: "Un orchestre, un chanteur et un amphithéâtre comble.",
+      note: "Un orchestre sur la scène de l’amphithéâtre de Carthage, diffusé chaque été depuis les débuts du festival.",
     },
     "world-cup": {
-      program: "La Tunisie à la Coupe du monde",
-      genre: "Sport",
-      note: "L’équipe nationale en fête, regardée par tout le pays au même moment.",
+      program: "Tunisie 3–1 Mexique",
+      genre: "Sport · Argentine 1978",
+      note: "Rosario, 2 juin 1978 : la première victoire d’une équipe africaine ou arabe en Coupe du monde.",
     },
     oasis: {
-      program: "Le développement des oasis",
+      program: "Chebika, l’oasis de montagne",
       genre: "Documentaire",
-      note: "Agriculteurs et ingénieurs du Sud parlent d’eau et de palmiers.",
+      note: "Palmiers, sources et un sentier dans les gorges près de Tozeur.",
     },
-    "ommi-traki": {
-      program: "Ommi Traki",
-      genre: "Comédie",
-      note: "Un duo comique dont les familles répètent encore les répliques.",
+    hadhra: {
+      program: "El Hadhra",
+      genre: "Musique soufie · Direct",
+      note: "Le spectacle soufi de Fadhel Jaziri, devant un amphithéâtre de Carthage comble.",
     },
-    sitcom: {
-      program: "Rires au salon",
-      genre: "Sitcom",
-      note: "Une sitcom de studio de l’époque des magnétoscopes.",
+    "khottab-al-bab": {
+      program: "El Khottab Al Bab",
+      genre: "Feuilleton de Ramadan",
+      note: "Une maison de la Médina, ses prétendants et ses voisins : le feuilleton de Ramadan 1996.",
     },
-    "ramadan-table": {
-      program: "À la table du Ramadan",
-      genre: "Série de Ramadan",
-      note: "Trois générations autour d’une même table après l’iftar.",
+    "mnamet-aroussia": {
+      program: "Mnamet Aroussia",
+      genre: "Feuilleton de Ramadan",
+      note: "La saga familiale du Ramadan 2000, qui gardait tout le pays à la maison après l’iftar.",
     },
     "choufli-hal": {
       program: "Choufli Hal",
       genre: "Sitcom",
-      note: "La sitcom que toute une génération cite de mémoire.",
+      note: "La sitcom qu’une génération entière cite de mémoire.",
     },
-    "warda-wa-bab": {
-      program: "Warda wa Bab",
-      genre: "Fiction",
-      note: "Un thé dans une cour aux carreaux bleus et aux vieilles arcades.",
+    malouf: {
+      program: "Une nuit de malouf",
+      genre: "Concert",
+      note: "Zied Gharsa et son ensemble font vivre le malouf andalou.",
     },
-    "el-douar": {
-      program: "El Douar",
-      genre: "Fiction",
-      note: "Un village la nuit et une dispute que personne n’oubliera.",
+    "zanqet-el-bacha": {
+      program: "Zanqet El Bacha",
+      genre: "Sitcom de Ramadan",
+      note: "Kamel Touati en infirmier du quartier, entouré d’une famille de la Médina.",
     },
-    "khatem-el-yasmine": {
-      program: "Khatem El Yasmine",
-      genre: "Fiction de Ramadan",
-      note: "Une histoire de famille racontée sous une tonnelle de jasmin.",
-    },
-    "comedy-night": {
-      program: "Soirée comédie",
-      genre: "Talk-show",
-      note: "Du stand-up et des rires, découpés et partagés le soir même.",
+    "ahla-tounes": {
+      program: "Ahla Tounes",
+      genre: "Matinale",
+      note: "Le studio du matin de Watania 1, en direct avec des invités de tout le pays.",
     },
     "harbor-restored": {
-      program: "Le port de pêche, restauré",
+      program: "Le port de Kerkennah, restauré",
       genre: "Restauration IA",
-      note: "Le port de 1968, restauré et colorisé. L’original reste dans les archives, juste à côté.",
+      note: "Le même port, en couleur et en détail. L’original reste dans les archives, juste à côté.",
     },
   },
 };

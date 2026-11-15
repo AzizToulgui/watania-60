@@ -46,7 +46,7 @@ export default function Header() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="" className="logo-mark" width={509} height={405} />
+        <img src="/logo.svg" alt="" className="logo-mark" width={378} height={324} />
         <span>{m.header.brand}</span>
       </a>
 

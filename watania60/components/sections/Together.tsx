@@ -5,19 +5,14 @@ import { frame, images, type FrameId } from "@/lib/archive";
 import { useI18n } from "@/lib/i18n";
 import { SectionHead, sectionCls, useInView, useReducedMotion } from "./shared";
 
-// Birth years, to show generations watching together. Avatars are abstract gradients on purpose.
-const VIEWERS = [
-  { year: 1948, g: "linear-gradient(135deg,#6b5b4a,#2a211a)" },
-  { year: 1961, g: "linear-gradient(135deg,#7a3b2e,#2a1410)" },
-  { year: 1979, g: "linear-gradient(135deg,#3f6a76,#13232a)" },
-  { year: 1994, g: "linear-gradient(135deg,#8a7a52,#2d2716)" },
-  { year: 2009, g: "linear-gradient(135deg,#5a6b8c,#1a2030)" },
-];
+// Portraits of beloved Watania characters; their names are in messages (together.viewers),
+// same order. Built by scripts/prepare-images.mjs.
+const VIEWERS = ["sbou3i", "slimane", "haj-klouf", "bacha", "ommi-traki"].map((id) => `/archive/viewers/${id}.jpg`);
 const REACTIONS = ["!", "♪", "ههه", "bravo", "يا سلام", "♪"];
 
 // Placeholder playlist; "added by" lines are in messages (together.addedBy), same order.
 const PLAYLIST: { f: FrameId; rt: string }[] = [
-  { f: "ramadan-table", rt: "52:10" },
+  { f: "mnamet-aroussia", rt: "52:10" },
   { f: "choufli-hal", rt: "38:44" },
   { f: "carthage", rt: "1:04:02" },
   { f: "world-cup", rt: "24:31" },
@@ -91,8 +86,8 @@ export default function Together() {
           </div>
 
           <div className="relative -mt-7 flex justify-center max-[640px]:-mt-5 gap-[clamp(10px,2vw,22px)]">
-            {VIEWERS.map((v, i) => (
-              <div key={v.year} className="relative flex flex-col items-center">
+            {VIEWERS.map((src, i) => (
+              <div key={i} className="relative flex flex-col items-center">
                 {floats
                   .filter((f) => f.who === i)
                   .map((f) => (
@@ -105,12 +100,13 @@ export default function Together() {
                       {f.text}
                     </span>
                   ))}
-                <div
-                  className="size-[clamp(40px,5vw,56px)] rounded-full border-2 border-black"
-                  style={{ background: v.g }}
-                  aria-hidden="true"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt=""
+                  className="size-[clamp(40px,5vw,56px)] rounded-full border-2 border-black object-cover"
                 />
-                <span className="mono mt-2 text-[9px] text-ink/50">{v.year}</span>
+                <span className="mt-2 w-[clamp(52px,7vw,84px)] text-center text-[11px] leading-tight text-ink/60">{t.viewers[i]}</span>
               </div>
             ))}
           </div>

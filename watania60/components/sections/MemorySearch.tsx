@@ -8,18 +8,18 @@ import { SectionHead, sectionCls, useInView, useReducedMotion } from "./shared";
 // Results for each example memory in messages (search.memories), in the same order.
 const RESULTS: { f: FrameId; ep: string; t: string; m: number }[][] = [
   [
-    { f: "ramadan-table", ep: "EP 12", t: "00:14:22", m: 92 },
+    { f: "mnamet-aroussia", ep: "EP 12", t: "00:14:22", m: 92 },
     { f: "choufli-hal", ep: "EP 03", t: "00:31:05", m: 78 },
-    { f: "khatem-el-yasmine", ep: "EP 21", t: "00:08:47", m: 61 },
+    { f: "zanqet-el-bacha", ep: "EP 21", t: "00:08:47", m: 61 },
   ],
   [
     { f: "carthage", ep: "LIVE", t: "00:45:32", m: 94 },
     { f: "malouf", ep: "SPECIAL", t: "00:19:33", m: 81 },
-    { f: "el-douar", ep: "EP 07", t: "01:02:18", m: 57 },
+    { f: "hadhra", ep: "LIVE", t: "01:02:18", m: 57 },
   ],
   [
     { f: "world-cup", ep: "LIVE", t: "01:12:40", m: 96 },
-    { f: "first-broadcast", ep: "NEWS", t: "00:05:12", m: 64 },
+    { f: "inauguration", ep: "NEWS", t: "00:05:12", m: 64 },
     { f: "oasis", ep: "DOC", t: "00:14:28", m: 52 },
   ],
 ];

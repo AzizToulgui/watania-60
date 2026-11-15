@@ -27,7 +27,7 @@ export default function Subtitles() {
   }, [mode, inView, reduced]);
 
   const active = mode === "Auto" ? auto : LINES.findIndex((l) => l.code === mode);
-  const frame = getFrame("el-douar");
+  const frame = getFrame("mnamet-aroussia");
 
   return (
     <section id="subtitles" data-tc="00:27:36:04" className={sectionCls}>
@@ -59,7 +59,7 @@ export default function Subtitles() {
 
         <div className="relative aspect-video overflow-hidden rounded-[3px] bg-[#0b0b0b]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={frame.thumb} alt="" className="h-full w-full object-cover opacity-85" />
+          <img src={frame.full} alt="" className="h-full w-full object-cover opacity-85" />
           <div className="absolute inset-0 bg-[linear-gradient(transparent_55%,rgba(0,0,0,.75))]" />
           <span className="mono absolute start-4 top-4 text-phosphor/70">{t.subtitles.live}</span>
           <span className="mono absolute end-4 top-4 text-ink/55" dir="ltr">{frame.year} · EP 04</span>

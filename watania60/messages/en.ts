@@ -85,10 +85,10 @@ const en = {
     title: "Restored. <em>Never replaced.</em>",
     alt: "نُرمّم دون أن نُلغي الأصل",
     lead: "AI restoration cleans damage, colorizes black-and-white footage and lifts old broadcasts to today’s screens. Drag the line to compare. The original is kept, untouched, beside every restored version.",
-    original: "Original · 1968 · 576i",
+    original: "Original · 1972 · 576i",
     restored: "Restored · AI colorized · 4K",
-    altBefore: "The fishing harbor, original 1968 black-and-white footage",
-    altAfter: "The fishing harbor, restored and colorized",
+    altBefore: "Kerkennah harbor, the worn black-and-white version",
+    altAfter: "Kerkennah harbor, restored in full color",
     slider: "Compare original and restored",
     stats: [
       { t: "Restoration", d: "Scratches, dropouts and tape noise removed frame by frame." },
@@ -163,6 +163,7 @@ const en = {
     party: "Watch party · 5 watching",
     playlist: "Sunday evenings",
     playlistMeta: "Shared · 4 titles · 2:59:27",
+    viewers: ["Sbou3i", "Slimane", "El Haj Klouf", "El Bacha", "Ommi Traki"],
     addedBy: ["Added by Sami’s grandmother", "Added by Leila", "Added by Youssef", "Added by Ines"],
   },
   timeline: {
@@ -204,80 +205,80 @@ const en = {
     end: "CH 01 · End of transmission",
   },
   archive: {
-    "first-broadcast": {
-      program: "The First Broadcast",
-      genre: "RTT · News",
-      note: "The first evening of Tunisian television: one desk, one microphone, one camera.",
+    inauguration: {
+      program: "Opening Night",
+      genre: "RTT · Ceremony",
+      note: "31 May 1966: President Bourguiba inaugurates Tunisian television in front of a brand-new set.",
+    },
+    "rtt-announcer": {
+      program: "The First Announcers",
+      genre: "RTT · Continuity",
+      note: "The faces who opened every evening, live and in black and white.",
+    },
+    "haj-klouf": {
+      program: "El Haj Klouf",
+      genre: "Sitcom",
+      note: "The busybody Haj, brought from radio to the young television, and the household that put up with him.",
     },
     "harbor-original": {
-      program: "The Fishing Harbor",
+      program: "Kerkennah Harbor",
       genre: "Documentary",
-      note: "Everyday life at a fishing port, filmed for the archive in 1968.",
+      note: "Fishermen coming home at dawn. Demo frame: a modern photo, aged to show what restoration brings back.",
     },
     carthage: {
       program: "Carthage Nights",
       genre: "Concert",
-      note: "Musicians under the Roman columns, broadcast live from the ruins.",
-    },
-    malouf: {
-      program: "A Night of Malouf",
-      genre: "Concert",
-      note: "An orchestra, a singer and a full amphitheater.",
+      note: "An orchestra on the stage of the Carthage amphitheatre, broadcast every summer since the festival began.",
     },
     "world-cup": {
-      program: "Tunisia at the World Cup",
-      genre: "Sports",
-      note: "The national team celebrating, watched by the whole country at once.",
+      program: "Tunisia 3–1 Mexico",
+      genre: "Sports · Argentina 1978",
+      note: "Rosario, 2 June 1978: the first World Cup win by an African or Arab team.",
     },
     oasis: {
-      program: "Oasis Development",
+      program: "Chebika, Mountain Oasis",
       genre: "Documentary",
-      note: "Farmers and engineers in the south, talking about water and palms.",
+      note: "Palms, springs and a path through the gorge near Tozeur.",
     },
-    "ommi-traki": {
-      program: "Ommi Traki",
-      genre: "Comedy",
-      note: "A comedy duo whose lines families still repeat.",
+    hadhra: {
+      program: "El Hadhra",
+      genre: "Sufi music · Live",
+      note: "Fadhel Jaziri’s Sufi spectacle, filling the Carthage amphitheatre.",
     },
-    sitcom: {
-      program: "Living-Room Laughs",
-      genre: "Sitcom",
-      note: "A studio sitcom from the VTR era.",
-    },
-    "ramadan-table": {
-      program: "At the Ramadan Table",
+    "khottab-al-bab": {
+      program: "El Khottab Al Bab",
       genre: "Ramadan series",
-      note: "Three generations around one table after iftar.",
+      note: "A Medina house, its suitors and its neighbours: the Ramadan series of 1996.",
+    },
+    "mnamet-aroussia": {
+      program: "Mnamet Aroussia",
+      genre: "Ramadan series",
+      note: "The Ramadan family saga of 2000 that kept the whole country home after iftar.",
     },
     "choufli-hal": {
       program: "Choufli Hal",
       genre: "Sitcom",
       note: "The sitcom an entire generation quotes from memory.",
     },
-    "warda-wa-bab": {
-      program: "Warda wa Bab",
-      genre: "Drama",
-      note: "Tea in a courtyard of blue tiles and old arches.",
+    malouf: {
+      program: "A Night of Malouf",
+      genre: "Concert",
+      note: "Zied Gharsa and his ensemble keep the Andalusian malouf alive.",
     },
-    "el-douar": {
-      program: "El Douar",
-      genre: "Drama",
-      note: "A village at night and an argument no one will forget.",
+    "zanqet-el-bacha": {
+      program: "Zanqet El Bacha",
+      genre: "Ramadan sitcom",
+      note: "Kamel Touati as the neighbourhood nurse, and the Medina family around him.",
     },
-    "khatem-el-yasmine": {
-      program: "Khatem El Yasmine",
-      genre: "Ramadan drama",
-      note: "A family story told under a canopy of jasmine.",
-    },
-    "comedy-night": {
-      program: "Comedy Night",
-      genre: "Talk show",
-      note: "Stand-up and laughter, clipped and shared the same evening.",
+    "ahla-tounes": {
+      program: "Ahla Tounes",
+      genre: "Morning show",
+      note: "Watania 1’s morning studio, live with guests from across the country.",
     },
     "harbor-restored": {
-      program: "The Fishing Harbor, Restored",
+      program: "Kerkennah Harbor, Restored",
       genre: "AI restoration",
-      note: "The 1968 harbor, restored and colorized. The original stays in the archive beside it.",
+      note: "The same harbor in full color and detail. The original stays in the archive beside it.",
     },
   },
 };

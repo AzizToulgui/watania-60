@@ -23,7 +23,7 @@ npm run build
 | What | Where |
 | --- | --- |
 | Intro film (6–10 s montage, B&W → color) | `public/intro.mp4` (missing → a fallback screen is shown) |
-| Higher-resolution stills (current ones are 512 px wide) | `public/images/`, then `npm run images` |
+| Clear rights for the Watania frames (see `CREDITS.md`) | `assets/images/` |
 | Years marked "approx." and frame notes | `lib/archive.ts` |
 | Example memories and results | `components/sections/MemorySearch.tsx` |
 | Companion answers (`[Actor name]`, `[year]`) | `components/sections/Companion.tsx` |
@@ -46,16 +46,17 @@ files are typed against the English one, so a missing or misspelled key fails `t
 - Every title keeps a secondary line in the other script: Arabic under EN/FR, English under AR.
 - Strings may use `<em>…</em>` and `<br/>` (see `rich()`). Arabic never gets letter-spacing or
   italics (see `:lang(ar)` in `globals.css`).
-- Have a native speaker review the Arabic copy, especially program titles not visible in the
-  source images (e.g. وردة وباب, الدوّار, أمّي تراكي).
+- Have a native speaker review the Arabic copy, especially the program notes in `archive`.
 
 ## Images
 
-Source stills and the logo live in `public/images/`. `npm run images` (`scripts/prepare-images.mjs`)
-crops them to the picture itself (several are UI mockups with browser chrome, players or TV bezels)
-into `public/archive/`, and writes the trimmed logo (`public/logo.png`) and the app icons
-(`app/icon.png`, `app/apple-icon.png`). Re-run it after replacing any source image; if a new
-image has a different layout, adjust its crop box in the script.
+Source stills and the logo live in `assets/images/` (outside `public/`, so they are not shipped).
+Every frame is a real photo or broadcast frame; `CREDITS.md` lists where each one comes from and
+its license. `npm run images` (`scripts/prepare-images.mjs`) crops away channel logos and
+letterboxing, then writes full stills (max 2400 px) to `public/archive/`, 960 px thumbnails to
+`public/archive/thumb/`, the restoration "before" frame, the vertical Creator Studio clip, the
+Watania+ logo (`public/logo.svg`, cut from the brand sheet) and the app icons. Re-run it after replacing a source image, and
+adjust its crop box in the script if the new image has a different layout.
 
 ## Not wired yet (marked `TODO` in code)
 

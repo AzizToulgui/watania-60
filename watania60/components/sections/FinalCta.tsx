@@ -38,7 +38,7 @@ export default function FinalCta() {
 
       <div className="relative text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img data-reveal src="/logo.png" alt={t.logoAlt} width={509} height={405} className="mx-auto mb-[clamp(16px,4vh,40px)] w-[clamp(64px,min(8vw,13vh),110px)]" />
+        <img data-reveal src="/logo.svg" alt={t.logoAlt} width={378} height={324} className="mx-auto mb-[clamp(16px,4vh,40px)] w-[clamp(64px,min(8vw,13vh),110px)]" />
         <h2 data-reveal className="font-serif text-[clamp(40px,7vw,108px)] leading-[1] font-light tracking-[-0.025em]">
           {t.line1}
           <br />
